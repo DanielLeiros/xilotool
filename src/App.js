@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import logo from "./imagens/logo_cores.png";
-import Calculador from "./calculador.js"
+import Pieces from "./pieces.js"
 
 class App extends React.Component{
   constructor(){
@@ -27,7 +27,6 @@ class App extends React.Component{
   }
 
   onChengePiece = (e) =>{
-      console.log(e)
     this.setState({
       selectedPiece: e
     })
@@ -117,7 +116,7 @@ class App extends React.Component{
             <div className="row">
               <div className="col-md-12">
           {/*Chamando componente para calcular e imprimir na tela!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11*/}
-                <Calculador selectedPiece={this.state.selectedPiece}/>
+                <Pieces selectedPiece={this.state.selectedPiece}/>
           {/*Componente chamado e impresso na tela com sucesso ou quase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11*/}
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function calcularDimensoesSimples (tipo,dimensao, valor) {
+	console.log(tipo, dimensao, valor)
 	let resultado;
 	if(dimensao === "l"){
 		switch (tipo){
@@ -27,6 +28,8 @@ export default function calcularDimensoesSimples (tipo,dimensao, valor) {
 				break;
 			case "Grelha MLC":
 				resultado = valor/20;
+				break;
+			default:
 				break;
 		}
 	}else if(dimensao === "h"){
@@ -55,67 +58,9 @@ export default function calcularDimensoesSimples (tipo,dimensao, valor) {
 			case "Grelha MLC":
 				resultado = valor*20;
 				break;
+			default:
+				break;
 		}
 	}
 	return resultado
 }
-
-// function calcularDimensoesAlturaDupla(tipo,dimensao, valor0, valor1){
-// 	let resultado0, resultado2
-// 	if(dimensao === "l"){
-// 		switch (tipo){
-// 			case "Viga Bi-apoiada e Corde de duas águas em MLC":
-// 				resultado0 = valor/17;
-// 				resultado1 = valor/17;
-// 				break;
-// 			case "Tesoura em MLC":
-// 				resultado0 = valor/17;
-// 				resultado1 = valor/17;
-// 				break;
-// 		}
-// 	}else if(dimensao === "h"){
-// 		switch (tipo){
-// 			case "Viga Bi-apoiada e Corde de duas águas em MLC":
-// 				resultado0 = valor/17;
-// 				resultado1 = valor/17;
-// 				break;
-// 			case "Tesoura em MLC":
-// 				resultado0 = valor/17;
-// 				resultado1 = valor/17;
-// 				break;
-// 		}
-// 	}
-// 	return [resultado0, resultado1]
-// }
-
-
-// function calcularDimensoesCompostas(tipo,dimensao, valor0, valor1){
-// 	let resultado0, resultado1;
-// 	if(dimensao === "s"){
-// 		switch(tipo){
-// 			case "Sistema Pórtico c/ Tirante em MLC":
-// 				resultado = valor/17;
-// 				break;
-// 			case "Sistema Pórtico Curvo em MLC":
-// 				resultado = valor/17;
-// 				break;
-// 			case "Sistema Pórtico em MLC":
-// 				resultado = valor/17;
-// 				break;
-// 		}		
-// 	}else if(tipo === "h"){
-// 		switch(tipo){
-// 			case "Sistema Pórtico c/ Tirante em MLC":
-// 				resultado = valor/17;
-// 				break;
-// 			case "Sistema Pórtico Curvo em MLC":
-// 				resultado = valor/17;
-// 				break;
-// 			case "Sistema Pórtico em MLC":
-// 				resultado = valor/17;
-// 				break;
-// 		}		
-// 	}
-// 	return [resultado0, resultado1]
-// }
-// 			

@@ -1,16 +1,18 @@
 import React from "react";
 import calcularDimensoesSimples from "./calculadorDimensoesSimples.js";
+import calcularDimensoesAlturaDupla from "./calculadorDimensoesAlturaDupla.js";
 
-class Calculador extends React.Component {
+class Pieces extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
 			h: "",
 			h1:"",
 			l: "",
+			s0:"",
+			s1:"",
 			selectedPiece: {
 				name: "",
-				
 				inclination:"",
 				freeSpan: "",
 				formula:"",
@@ -49,12 +51,19 @@ class Calculador extends React.Component {
 		let piece = this.state.pieces.filter(el => {
 				return el.name === this.props.selectedPiece;
 
-		})
+		})[0]
 		console.log("piece",piece)
-		if(piece.name !== this.state.selectedPiece.name){
-			this.setState({
-					selectedPiece: piece
-				})
+		if(piece){
+			if(piece.name !== this.state.selectedPiece.name){
+				this.setState({
+						selectedPiece: piece,
+						h: "",
+						h1: "",
+						l:"",
+						s0:"",
+						s1:""
+					})
+			}
 		}
 	}
 
@@ -73,54 +82,63 @@ class Calculador extends React.Component {
 	}
 
 	changeHAlturaDupla = (event) => {
-		let results = calcularDimensoesSimples(event.target.name ,"h", event.target.value)
-		this.setState({
-			h: event.target.value,
-			h1: results[0],  
-			l: results[1],
-		})
+		let results = calcularDimensoesAlturaDupla(event.target.name ,"h", event.target.value)
+		console.log("sdfasd",results)
+		if(results){	
+			this.setState({
+				h: event.target.value,
+				h1: results[0],  
+				l: results[1],
+			})
+		}
 	}
 
 	changeH1AlturaDupla = (event) => {
-		let results = calcularDimensoesSimples(event.target.name ,"h1", event.target.value)
-		this.setState({
-			h: results[0],  
-			h1: event.target.value,
-			l: results[1],
-		})
+		let results = calcularDimensoesAlturaDupla(event.target.name ,"h1", event.target.value)
+		if(results){
+			this.setState({
+				h: results[0],  
+				h1: event.target.value,
+				l: results[1],
+			})
+		}
 	}
 
 	changeLAlturaDupla = (event) => {
-		let results = calcularDimensoesSimples(event.target.name ,"l", event.target.value)
-		this.setState({
-			h: results[0],
-			h1: results[1],  
-			l: event.target.value,
-		})
+		let results = calcularDimensoesAlturaDupla(event.target.name ,"l", event.target.value)
+		if(results){
+			this.setState({
+				h: results[0],
+				h1: results[1],  
+				l: event.target.value,
+			})
+		}
 	}
 			
 	render(){
 
 		const simples = (
 			<div className="columns">
-				<input value={this.state.h} name={this.props.selectedPiece} onChange={(e) => this.changeHSimples(e)}/>
-				<input value={this.state.l} name={this.props.selectedPiece} onChange={(e) => this.changeLSimples(e)}/>
+				<input value={this.state.h} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeHSimples(e)}/>
+				<input value={this.state.l} name={this.props.selectedPiece} placeholder={"Insira um valor..."}  onChange={(e) => this.changeLSimples(e)}/>
 			</div>
 		);
 
 		const alturaDupla = (
 			<div className="columns">
-				<input value={this.state.h} name={this.props.selectedPiece} onChange={(e) => this.changeHAlturaDupla(e)}/>
-				<input value={this.state.h1} name={this.props.selectedPiece} onChange={(e) => this.changeH1AlturaDupla(e)}/>
-				<input value={this.state.l} name={this.props.selectedPiece} onChange={(e) => this.changeH1AlturaDupla(e)}/>
+				<input value={this.state.h} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeHAlturaDupla(e)}/>
+				<input value={this.state.h1} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeH1AlturaDupla(e)}/>
+				<input value={this.state.l} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeLAlturaDupla(e)}/>
 			</div>
 		);
 
 		const composta = (
 			<div className="columns">
-				<input value={this.state.h} name={this.props.selectedPiece} onChange={(e) => this.changeHAlturaDupla(e)}/>
-				<input value={this.state.s} name={this.props.selectedPiece} onChange={(e) => this.changeH1AlturaDupla(e)}/>
-				<input value={this.state.s1} name={this.props.selectedPiece} onChange={(e) => this.changeH1AlturaDupla(e)}/>
+				<label>Alguma coisa:</label>
+				<input value={this.state.s0} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeHAlturaDupla(e)}/>
+				<input value={this.state.s1} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeH1AlturaDupla(e)}/>
+				<span>=></span>
+				<output value={this.state.h} name={this.props.selectedPiece} />
 			</div>
 		);
 
@@ -131,11 +149,15 @@ class Calculador extends React.Component {
                 <u>{this.props.selectedPiece}</u>
               </div>
               <div className="card-body ">
-   				{this.state.selectedPiece.formula === "simples" ?
-						simples :
-						this.state.selectedPiece === "alturaDupla" ?
-						alturaDupla : 
-						composta
+   				{this.state.selectedPiece ?		
+					(this.state.selectedPiece.formula === "simples" ?
+					simples :
+					this.state.selectedPiece.formula === "alturaDupla" ?
+					alturaDupla : 
+					this.state.selectedPiece.formula === "composta" ?
+					composta : null 	
+   					):
+   					null
    				}
               </div>
             </div>
@@ -143,4 +165,4 @@ class Calculador extends React.Component {
 	}
 }
 
-export default Calculador;
+export default Pieces;
