@@ -22,7 +22,6 @@ class App extends React.Component{
       navIsOpen: isOpen,
       navOpen: isOpen ? "App nav-open" : "App",
       toggle: isOpen ? "navbar-toggle toggled" : "navbar-toggle"    ,
-      selectedPiece: ""
     })
   }
 
@@ -56,14 +55,13 @@ class App extends React.Component{
         <div className="wrapper">
           <div className="sidebar colaps" data-color="wood-texture">
             <div className="logo">
-              <a href="https://www.google.com" className="simple-text logo-normal">
+              <a href="#" className="simple-text logo-normal">
                 <img src={logo} alt="logo xilotool"/>
               </a>
             </div>
             <div className="sidebar-wrapper" id="sidebar-wrapper">
               <ul className="nav">
                <div className="select-piece">
-                 <u>Selecione uma peça:</u>                   
                </div>
                {piecesList.map((el,i) =>{
                   return(

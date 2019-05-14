@@ -5,7 +5,7 @@ import logo from "./imagens/logo_f_horizontal.png";
 export default function welcome(){
 	return(
 		<div className="row justify-content-md-center">
-			<img src={logo} alt="logo xilotool" className="col-md-8"/>
+			<img src={logo} alt="logo xilotool"/>
 			<div style={{textAlign:"center", padding: '0 40px 0 40px'}}>
 				<h2>Bem Vindo!</h2>
 				<p>

@@ -134,8 +134,8 @@ class Pieces extends React.Component {
 	render(){
 		const name = this.props.selectedPiece;
 		const placeholder = "Insira um valor...";
-		const input5 = "no-border-brow col-md-5";
-		const input3 = "no-border-brow col-md-3";
+		const input5 = "no-border-brow col-md-5 col-sm-6";
+		const input3 = "no-border-brow col-md-3 col-sm-6";
 
 		const simples = (
 			<div className="col-md-9">				
@@ -171,28 +171,34 @@ class Pieces extends React.Component {
 		);
 
 		const info = (
-			<div>
-				Inclinação: {this.state.selectedPiece.inclination} / Vão livre: {this.state.selectedPiece.freeSpan}
-			</div>
+			<span className="info">
+				<span>Inclinação: {this.state.selectedPiece.inclination}</span>
+				<span>Vão livre: {this.state.selectedPiece.freeSpan}</span>
+			</span>
 		)
 
 		return (
             <div className="card">
                 <div className="card-header">
-                	<u>{this.props.selectedPiece}</u>
+                	{this.props.selectedPiece}
                 </div>
-                <div className="card-body row justify-content-md-center">   
-	   				{this.state.selectedPiece ?
+                <div className="card-body column">
+                	<div className="row justify-content-md-center">
+                		{this.state.selectedPiece.name ? info : null}
+                	</div>
+                	<div className="row justify-content-md-center">
+		   				{this.state.selectedPiece ?
 
-						(this.state.selectedPiece.formula === "simples" ?
-						simples :
-						this.state.selectedPiece.formula === "alturaDupla" ?
-						alturaDupla : 
-						this.state.selectedPiece.formula === "composta" ?
-						composta : welcome() 	
-	   					):
-	   					welcome()
-		   				}
+							(this.state.selectedPiece.formula === "simples" ?
+							simples :
+							this.state.selectedPiece.formula === "alturaDupla" ?
+							alturaDupla : 
+							this.state.selectedPiece.formula === "composta" ?
+							composta : welcome() 	
+		   					):
+		   					welcome()
+			   				}
+                	</div>
                 </div>
             </div>
    		)

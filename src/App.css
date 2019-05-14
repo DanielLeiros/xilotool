@@ -12,6 +12,15 @@
 .span-result{
   font-size: 18px;
 }
+.info{
+  color: grey;
+  font-size: 15px;
+}
+
+.info span {
+  margin-right: 20px;
+}
+
 /*fim adaptações*/
 
 /*estilo scroll*/
@@ -2742,7 +2751,7 @@ Created using IcoMoon - icomoon.io
     background-image: url("./imagens/wood-texture.jpg"); 
     opacity: 1;
     background-color: grey;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
   }
   .sidebar[data-color="blue"]:after,
   .off-canvas-sidebar[data-color="blue"]:after {
