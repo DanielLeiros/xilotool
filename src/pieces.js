@@ -1,6 +1,8 @@
 import React from "react";
-import calcularDimensoesSimples from "./calculadorDimensoesSimples.js";
-import calcularDimensoesAlturaDupla from "./calculadorDimensoesAlturaDupla.js";
+import welcome from "./welcome"
+import calcularDimensoesSimples from "./util/calculadorDimensoesSimples.js";
+import calcularDimensoesAlturaDupla from "./util/calculadorDimensoesAlturaDupla.js";
+import calcularDimensoesCompostas from "./util/calculadorDimensoesCompostas.js";
 
 class Pieces extends React.Component {
 	constructor(props){
@@ -50,19 +52,10 @@ class Pieces extends React.Component {
 	componentDidUpdate(){
 		let piece = this.state.pieces.filter(el => {
 				return el.name === this.props.selectedPiece;
-
 		})[0]
-		console.log("piece",piece)
 		if(piece){
 			if(piece.name !== this.state.selectedPiece.name){
-				this.setState({
-						selectedPiece: piece,
-						h: "",
-						h1: "",
-						l:"",
-						s0:"",
-						s1:""
-					})
+				this.setState({selectedPiece: piece, h: "", h1: "", l:"", s0:"", s1:""})
 			}
 		}
 	}
@@ -114,52 +107,93 @@ class Pieces extends React.Component {
 			})
 		}
 	}
+
+	changeS0 = (event) => {
+		this.setState({
+			s0 : event.target.value
+		})
+	}
+
+	changeS1 = (event) => {
+		this.setState({
+			s1 : event.target.value
+		})
+	}
+
+	calculateByComposedHigh = (event) => {
+		if(this.state.s0 && this.state.s1){
+			console.log(this.state.s0, this.state.s1)
+			let resposta = calcularDimensoesCompostas(event.target.name, parseInt(this.state.s0), parseInt(this.state.s1))
+			console.log(resposta, this.state.s0, this.state.s1)
+			this.setState({
+				h: resposta
+			})
+		}
+	}
 			
 	render(){
+		const name = this.props.selectedPiece;
+		const placeholder = "Insira um valor...";
+		const input5 = "no-border-brow col-md-5";
+		const input3 = "no-border-brow col-md-3";
 
 		const simples = (
-			<div className="columns">
-				<input value={this.state.h} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeHSimples(e)}/>
-				<input value={this.state.l} name={this.props.selectedPiece} placeholder={"Insira um valor..."}  onChange={(e) => this.changeLSimples(e)}/>
+			<div className="col-md-9">				
+					<label>h: </label>					
+					<input className={input5} value={this.state.h} name={name} placeholder={placeholder} onChange={(event) => this.changeHSimples(event)}/>
+					<label>l: </label>
+					<input className={input5} value={this.state.l} name={name} placeholder={placeholder}  onChange={(event) => this.changeLSimples(event)}/>
 			</div>
 		);
 
 		const alturaDupla = (
 			<div className="columns">
-				<input value={this.state.h} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeHAlturaDupla(e)}/>
-				<input value={this.state.h1} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeH1AlturaDupla(e)}/>
-				<input value={this.state.l} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeLAlturaDupla(e)}/>
+				<label>h<sub>0</sub>:</label>
+				<input className={input3} value={this.state.h} name={name} placeholder={placeholder} onChange={(event) => this.changeHAlturaDupla(event)}/>
+				<label>h<sub>1</sub>:</label>
+				<input className={input3} value={this.state.h1} name={name} placeholder={placeholder} onChange={(event) => this.changeH1AlturaDupla(event)}/>
+				<label>l:</label>
+				<input className={input3} value={this.state.l} name={name} placeholder={placeholder} onChange={(event) => this.changeLAlturaDupla(event)}/>
 			</div>
 		);
 
 		const composta = (
 			<div className="columns">
-				<label>Alguma coisa:</label>
-				<input value={this.state.s0} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeHAlturaDupla(e)}/>
-				<input value={this.state.s1} name={this.props.selectedPiece} placeholder={"Insira um valor..."} onChange={(e) => this.changeH1AlturaDupla(e)}/>
-				<span>=></span>
-				<output value={this.state.h} name={this.props.selectedPiece} />
+				<label>s<sub>0</sub>:</label>
+				<input className={input3} value={this.state.s0} name={name} placeholder={placeholder} onChange={(event) => this.changeS0(event)}/>
+				<label>s<sub>1</sub>:</label>
+				<input className={input3} value={this.state.s1} name={name} placeholder={placeholder} onChange={(event) => this.changeS1(event)}/>
+				
+				<button className="btn btn-primary btn-result" name={name} onClick={(event)=> this.calculateByComposedHigh(event)}> Calcular </button>
+				<label>h:</label>
+				<span className="span-result">{this.state.h}</span>
 			</div>
 		);
 
+		const info = (
+			<div>
+				Inclinação: {this.state.selectedPiece.inclination} / Vão livre: {this.state.selectedPiece.freeSpan}
+			</div>
+		)
 
 		return (
             <div className="card">
-              <div className="card-header">
-                <u>{this.props.selectedPiece}</u>
-              </div>
-              <div className="card-body ">
-   				{this.state.selectedPiece ?		
-					(this.state.selectedPiece.formula === "simples" ?
-					simples :
-					this.state.selectedPiece.formula === "alturaDupla" ?
-					alturaDupla : 
-					this.state.selectedPiece.formula === "composta" ?
-					composta : null 	
-   					):
-   					null
-   				}
-              </div>
+                <div className="card-header">
+                	<u>{this.props.selectedPiece}</u>
+                </div>
+                <div className="card-body row justify-content-md-center">   
+	   				{this.state.selectedPiece ?
+
+						(this.state.selectedPiece.formula === "simples" ?
+						simples :
+						this.state.selectedPiece.formula === "alturaDupla" ?
+						alturaDupla : 
+						this.state.selectedPiece.formula === "composta" ?
+						composta : welcome() 	
+	   					):
+	   					welcome()
+		   				}
+                </div>
             </div>
    		)
 	}

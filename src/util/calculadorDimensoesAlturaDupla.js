@@ -11,6 +11,8 @@ export default function calcularDimensoesAlturaDupla(tipo,dimensao, valor){
 				resultado0 = valor/30;
 				resultado1 = valor/16;
 				break;
+			default:
+				break;
 		}
 	}else if(dimensao === "h"){
 		switch (tipo){
@@ -22,6 +24,8 @@ export default function calcularDimensoesAlturaDupla(tipo,dimensao, valor){
 				resultado0 = valor*30/16;
 				resultado1 = valor*30;
 				break;
+			default:
+				break;
 		}
 	}else if(dimensao === "h1"){
 		switch (tipo){
@@ -32,6 +36,8 @@ export default function calcularDimensoesAlturaDupla(tipo,dimensao, valor){
 			case "Tesoura em MLC":
 				resultado0 = valor*16/30;
 				resultado1 = valor*16;
+				break;
+			default:
 				break;
 		}
 	}

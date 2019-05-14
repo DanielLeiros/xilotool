@@ -1,3 +1,43 @@
+/*adaptações*/
+.no-border-brow {
+  font-size: 15px;
+  border: none;
+  border-bottom: 2px solid #59220b;
+  margin-right: 20px;
+}
+
+.btn-result{
+  margin-right: 15px !important;
+}
+.span-result{
+  font-size: 18px;
+}
+/*fim adaptações*/
+
+/*estilo scroll*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #59220b; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bf6c2e; 
+}
+/*fim estilo scroll*/
+
+/*inicio de classes para template e também algumas alterações específicas já realizadas, vide class name
+Dica: Caso não esteja achanto a classe correta, procure no inspecionador de elementos do navegador
+quais classes estão sendo usadas nas tags e busque aqui com ctrl+f*/
+
 .App {
   text-align: center;
 }
@@ -1663,6 +1703,13 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
     .navbar .navbar-nav .nav-link.disabled {
       opacity: .5;
       color: #FFFFFF; }
+
+  .nav-item .nav-link span {
+    font-size:16px;
+    letter-spacing: 1px;
+
+  }
+
   .navbar .navbar-nav .nav-item.active .nav-link:not(.btn),
   .navbar .navbar-nav .nav-item .nav-link:not(.btn):focus,
   .navbar .navbar-nav .nav-item .nav-link:not(.btn):hover,
@@ -2563,7 +2610,8 @@ Created using IcoMoon - icomoon.io
     .off-canvas-sidebar .nav li:hover:not(.active) > a,
     .off-canvas-sidebar .nav li:focus:not(.active) > a {
       letter-spacing: 0.2px;
-      background-color: rgba(255, 255, 255, 0.4); }
+      color:white;
+      background-color: #59220b; }
       .sidebar .nav li:hover:not(.active) > a i,
       .sidebar .nav li:focus:not(.active) > a i,
       .off-canvas-sidebar .nav li:hover:not(.active) > a i,
@@ -2689,13 +2737,12 @@ Created using IcoMoon - icomoon.io
     background: #888;
     background: linear-gradient(#888 0%, #000 80%);
     z-index: 3; }
-  .sidebar[data-color="grey-texture"]:after,
-  .off-canvas-sidebar[data-color="grey-texture"]:after {
-    background-image: url("./imagens/grey-texture.jpg"); 
+  .sidebar[data-color="wood-texture"]:after,
+  .off-canvas-sidebar[data-color="wood-texture"]:after {
+    background-image: url("./imagens/wood-texture.jpg"); 
     opacity: 1;
     background-color: grey;
     background-repeat: no-repeat;
-    
   }
   .sidebar[data-color="blue"]:after,
   .off-canvas-sidebar[data-color="blue"]:after {
@@ -3779,4 +3826,4 @@ Created using IcoMoon - icomoon.io
     transition-timing-function: cubic-bezier(0.685, 0.0473, 0.346, 1);
     -webkit-overflow-scrolling: touch; } }
 
-/*# sourceMappingURL=now-ui-dashboard.css.map */
+/*fim classes do template*/

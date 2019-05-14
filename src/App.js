@@ -22,7 +22,7 @@ class App extends React.Component{
       navIsOpen: isOpen,
       navOpen: isOpen ? "App nav-open" : "App",
       toggle: isOpen ? "navbar-toggle toggled" : "navbar-toggle"    ,
-      selectedPiece: "Xilotool"
+      selectedPiece: ""
     })
   }
 
@@ -54,7 +54,7 @@ class App extends React.Component{
     return (
       <div className={this.state.navOpen}>
         <div className="wrapper">
-          <div className="sidebar colaps" data-color="grey-texture">
+          <div className="sidebar colaps" data-color="wood-texture">
             <div className="logo">
               <a href="https://www.google.com" className="simple-text logo-normal">
                 <img src={logo} alt="logo xilotool"/>
@@ -97,13 +97,13 @@ class App extends React.Component{
               <div className="collapse navbar-collapse justify-content-end" id="navigation">
                 <ul className="navbar-nav">
                    <li className="nav-item">
-                    <a className="nav-link" href="https://www.google.com">
-                      <i className="now-ui-icons education_hat"></i>
+                    <a className="nav-link" href="https://www.labem.ct.ufrn.br/">
+                      <span>Labem</span>
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="https://www.google.com">
-                      <i className="now-ui-icons travel_info"></i>
+                    <a className="nav-link" href="https://www.facebook.com/csufrn/">
+                      <span>CS UFRN</span>
                       </a>
                   </li>
                 </ul>
@@ -127,27 +127,18 @@ class App extends React.Component{
               <nav>
                 <ul>
                   <li>
-                    <a href="https://www.creative-tim.com">
-                      Creative Tim
+                    <a href="https://www.labem.ct.ufrn.br/">
+                      Labem
                     </a>
                   </li>
                   <li>
-                    <a href="http://presentation.creative-tim.com">
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://blog.creative-tim.com">
-                      Blog
+                    <a href="https://www.facebook.com/csufrn/">
+                      CS
                     </a>
                   </li>
                 </ul>
               </nav>
-              <div className="copyright" id="copyright">
-                <a href="https://www.invisionapp.com" rel="noopener noreferrer" target="_blank">Invision</a>. Coded by
-                <a href="https://www.creative-tim.com" rel="noopener noreferrer" target="_blank">Creative Tim</a>.
-              </div>
-            </div>
+             </div>
           </footer> 
         </div>  
       </div>
