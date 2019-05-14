@@ -147,7 +147,7 @@ class Pieces extends React.Component {
 		);
 
 		const alturaDupla = (
-			<div className="columns">
+			<div className="col-md-9">
 				<label>h<sub>0</sub>:</label>
 				<input className={input3} value={this.state.h} name={name} placeholder={placeholder} onChange={(event) => this.changeHAlturaDupla(event)}/>
 				<label>h<sub>1</sub>:</label>
@@ -158,7 +158,7 @@ class Pieces extends React.Component {
 		);
 
 		const composta = (
-			<div className="columns">
+			<div className="col-md-9">
 				<label>s<sub>0</sub>:</label>
 				<input className={input3} value={this.state.s0} name={name} placeholder={placeholder} onChange={(event) => this.changeS0(event)}/>
 				<label>s<sub>1</sub>:</label>
@@ -171,7 +171,7 @@ class Pieces extends React.Component {
 		);
 
 		const info = (
-			<span className="info">
+			<span className="info col-md-9">
 				<span>Inclinação: {this.state.selectedPiece.inclination}</span>
 				<span>Vão livre: {this.state.selectedPiece.freeSpan}</span>
 			</span>
