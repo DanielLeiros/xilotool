@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import logo from "./imagens/logo_cores.png";
+import logo from "./imagens/logo.png";
 import Pieces from "./pieces.js"
 
 class App extends React.Component{
@@ -47,7 +47,8 @@ class App extends React.Component{
       "Arco em MLC",
       "Treliça em MLC",
       "Tesoura em MLC 2",
-      "Grelha MLC"
+      "Grelha MLC",
+      "Sistema Geodésico em MLC"
     ]
 
     return (
@@ -59,6 +60,7 @@ class App extends React.Component{
                 <img src={logo} alt="logo xilotool"/>
               </a>
             </div>
+          {/*Criação dos ítens sidebar - Itera sobre o vetor que guarda os nomes das peças e printa como menu*/}
             <div className="sidebar-wrapper" id="sidebar-wrapper">
               <ul className="nav">
                <div className="select-piece">
@@ -78,6 +80,7 @@ class App extends React.Component{
                 <br/> 
               </ul>
             </div>
+          {/*Fim dos ítens da sidebar*/}            
           </div>
         </div>
         <div className="main-panel" id="main-panel">

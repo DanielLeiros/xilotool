@@ -1,16 +1,26 @@
 /*adaptações*/
-.no-border-brow {
-  font-size: 15px;
+.sub-border-brow {
   border: none;
   border-bottom: 2px solid #59220b;
+  outline: none;
+}
+
+.input-field{
+  font-size: 15px;
   margin-right: 20px;
+  color: #9A9A9A;
+}
+
+.input-field > input{
+  margin-right: 0px !important;
+  color: black;
 }
 
 .btn-result{
   margin-right: 15px !important;
 }
 .span-result{
-  font-size: 18px;
+  font-size: 15px;
 }
 .info{
   color: grey;

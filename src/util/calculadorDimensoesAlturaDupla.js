@@ -1,4 +1,3 @@
-import React from "react";
 export default function calcularDimensoesAlturaDupla(tipo,dimensao, valor){
 	let resultado0, resultado1
 	if(dimensao === "l"){
@@ -41,5 +40,5 @@ export default function calcularDimensoesAlturaDupla(tipo,dimensao, valor){
 				break;
 		}
 	}
-	return [resultado0, resultado1]
+	return [resultado0.toFixed(2), resultado1.toFixed(2)]
 }

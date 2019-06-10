@@ -1,7 +1,4 @@
-import React from "react";
-
 export default function calcularDimensoesSimples (tipo,dimensao, valor) {
-	console.log(tipo, dimensao, valor)
 	let resultado;
 	if(dimensao === "l"){
 		switch (tipo){
@@ -62,5 +59,5 @@ export default function calcularDimensoesSimples (tipo,dimensao, valor) {
 				break;
 		}
 	}
-	return resultado
+	return resultado.toFixed(2)
 }

@@ -1,4 +1,3 @@
-import React from "react";
 export default function calcularDimensoesCompostas(tipo, s0, s1){
 	let resultado;
 	switch(tipo){
@@ -14,6 +13,6 @@ export default function calcularDimensoesCompostas(tipo, s0, s1){
 		default:
 			break;
 	}	
-	return resultado
+	return resultado.toFixed(2)
 }
 			
