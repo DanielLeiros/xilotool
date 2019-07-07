@@ -1,4 +1,26 @@
 /*adaptações*/
+
+.flag-select {
+  margin-top: 11px !important;
+}
+
+.arrow-down{
+  color: #eee !important;
+}
+
+
+.flag-select img {
+  position: inherit !important;
+}
+
+.country-label {
+  color:#eee;
+}
+
+.flag-select .flag-option .country-label {
+  color: #333;
+}
+
 .sub-border-brow {
   border: none;
   border-bottom: 2px solid #59220b;

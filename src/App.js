@@ -3,7 +3,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import logo from "./imagens/logo.png";
-import Pieces from "./pieces.js"
+import Pieces from "./pieces.js";
+import ReactFlagsSelect from 'react-flags-select';
+import 'react-flags-select/css/react-flags-select.css';
+import 'react-flags-select/scss/react-flags-select.scss';
+import {msg} from "./util/msg.js" 
 
 class App extends React.Component{
   constructor(){
@@ -11,8 +15,15 @@ class App extends React.Component{
     this.state = {
       navIsOpen: false,
       navOpen: "App",
-      toggle: "navbar-toggle"   
-      
+      toggle: "navbar-toggle",   
+      defaultLang: "BR",
+    }
+  }
+
+  componentWillMount(){
+    const lang = window.localStorage.getItem("language");
+    if(lang === "US"){
+      this.setState({defaultLang:"US"})
     }
   }
 
@@ -31,13 +42,18 @@ class App extends React.Component{
     })
   }
 
+  onSelectLang = (e) =>{
+    window.localStorage.setItem("language",e);
+    this.setState({defaultLang: e})
+  }
+
   
 
   render(){
     const piecesList = [
       "Viga Bi-apoiada em MLC",
       "Viga Triapoiada",
-      "Viga Bi-apoiada e Corde de duas águas em MLC",
+      "Viga Bi-apoiada e Corte de duas águas em MLC",
       "Tesoura em MLC",
       "Travessa Bi-apoiada c/ Balanço em MLC",
       "Sistema Pórtico c/ Tirante em MLC",
@@ -70,7 +86,7 @@ class App extends React.Component{
                    <li key={i}>
                       <a>
                         <div onClick={() => this.onChengePiece(el)} >
-                          {el}
+                          {msg(el)}
                         </div>
                       </a>
                     </li>
@@ -106,6 +122,14 @@ class App extends React.Component{
                     <a className="nav-link" href="https://www.facebook.com/csufrn/">
                       <span>CS UFRN</span>
                       </a>
+                  </li>
+                  <li className="nav-item">
+                    <ReactFlagsSelect 
+                      countries={["US", "BR"]} 
+                      customLabels={{"US": "en-US","BR": "pt-BR"}} 
+                      defaultCountry={this.state.defaultLang}
+                      onSelect={this.onSelectLang}
+                      />
                   </li>
                 </ul>
               </div>

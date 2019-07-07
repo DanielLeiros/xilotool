@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+    xilo-app:
+        container_name: xilo-app
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - '.:/react-app'
+            - '/react-app/node_modules'
+        ports:
+            - '3000:3000'
+        command: npm start

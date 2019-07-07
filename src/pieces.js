@@ -3,6 +3,7 @@ import welcome from "./welcome"
 import calcularDimensoesSimples from "./util/calculadorDimensoesSimples.js";
 import calcularDimensoesAlturaDupla from "./util/calculadorDimensoesAlturaDupla.js";
 import calcularDimensoesCompostas from "./util/calculadorDimensoesCompostas.js";
+import {msg} from "./util/msg.js"
 
 class Pieces extends React.Component {
 	constructor(props){
@@ -132,7 +133,7 @@ class Pieces extends React.Component {
 			
 	render(){
 		const name = this.props.selectedPiece;
-		const placeholder = "Insira um valor...";
+		const placeholder = msg("input-placeholder");
 		const input5 = "input-field sub-border-brow col-md-5 col-sm-6";
 		const input3 = "input-field sub-border-brow col-md-3 col-sm-6";
 
@@ -192,15 +193,15 @@ class Pieces extends React.Component {
 
 		const info = (
 			<span className="info col-md-9">
-				<span>Inclinação: {this.state.selectedPiece.inclination}</span>
-				<span>Vão livre: {this.state.selectedPiece.freeSpan}</span>
+				<span>{msg("inclinacao")} {this.state.selectedPiece.inclination}</span>
+				<span>{msg("vao-livre")} {this.state.selectedPiece.freeSpan}</span>
 			</span>
 		)
 
 		return (
             <div className="card">
                 <div className="card-header">
-                	{this.props.selectedPiece}
+                	{msg(this.props.selectedPiece)}
                 </div>
                 <div className="card-body column">
                 	<div className="row justify-content-md-center">
