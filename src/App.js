@@ -3,6 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import logo from "./imagens/logo.png";
+import labem from "./imagens/labem.png";
+import cs from "./imagens/csufrn.png";
 import Pieces from "./pieces.js";
 import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
@@ -50,6 +52,8 @@ class App extends React.Component{
   
 
   render(){
+    const {navIsOpen, navOpen, defaultLang, toggle, selectedPiece} = this.state;
+
     const piecesList = [
       "Viga Bi-apoiada em MLC",
       "Viga Triapoiada",
@@ -68,7 +72,7 @@ class App extends React.Component{
     ]
 
     return (
-      <div className={this.state.navOpen}>
+      <div className={navOpen}>
         <div className="wrapper">
           <div className="sidebar colaps" data-color="wood-texture">
             <div className="logo">
@@ -99,11 +103,11 @@ class App extends React.Component{
           {/*Fim dos ítens da sidebar*/}            
           </div>
         </div>
-        <div className="main-panel" id="main-panel">
+        <div className="main-panel" id="main-panel" onClick={()=> navIsOpen ? this.handleToggleBar() : null}>
           <nav className="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute">
             <div className="container-fluid">
               <div className="navbar-wrapper">
-                <div className={this.state.toggle} onClick={this.handleToggleBar}>
+                <div className={toggle} onClick={this.handleToggleBar}>
                   <button type="button" className="navbar-toggler">
                     <span className="navbar-toggler-bar bar1"></span>
                     <span className="navbar-toggler-bar bar2"></span>
@@ -127,7 +131,7 @@ class App extends React.Component{
                     <ReactFlagsSelect 
                       countries={["US", "BR"]} 
                       customLabels={{"US": "en-US","BR": "pt-BR"}} 
-                      defaultCountry={this.state.defaultLang}
+                      defaultCountry={defaultLang}
                       onSelect={this.onSelectLang}
                       />
                   </li>
@@ -141,7 +145,7 @@ class App extends React.Component{
             <div className="row">
               <div className="col-md-12">
           {/*Chamando componente para calcular e imprimir na tela!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11*/}
-                <Pieces selectedPiece={this.state.selectedPiece}/>
+                <Pieces selectedPiece={selectedPiece}/>
           {/*Componente chamado e impresso na tela com sucesso ou quase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11*/}
               </div>
             </div>
@@ -149,20 +153,26 @@ class App extends React.Component{
             
           <footer className="footer">
             <div className="container-fluid">
-              <nav>
-                <ul>
-                  <li>
-                    <a href="https://www.labem.ct.ufrn.br/">
-                      Labem
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.facebook.com/csufrn/">
-                      CS
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+              <div className="row justify-content-center" style={{background:"#592202", height:"100%", padding: 20}}>
+                <div className="col-sm-8 col-xs-12 images-footer">
+                  <a href="https://www.labem.ct.ufrn.br"><img src={labem} alt="Laboratório de estudos em madeira UFRN" height="75"/></a>
+                  <a href="https://www.facebook.com/csufrn"><img src={cs} alt="Computer Society UFRN" height="75"/></a>
+                </div>
+                <div className="col-sm-4 col-xs-12 text-footer">
+                  <em>                    
+                    {msg("contato")}
+                    <ul className="contatos">
+                      <li>labem.ufrn@gmail.com</li>
+                      <li>cs.ieee.ufrn@gmail.com</li>
+                    </ul>
+                  </em>
+                </div>
+                <div className="justify-content-center">
+                  <div className="copyright">
+                    Copyright © 2019 - Labem - Beta.v1.0.1
+                  </div>
+                </div>    
+              </div>          
              </div>
           </footer> 
         </div>  

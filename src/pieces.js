@@ -3,51 +3,64 @@ import welcome from "./welcome"
 import calcularDimensoesSimples from "./util/calculadorDimensoesSimples.js";
 import calcularDimensoesAlturaDupla from "./util/calculadorDimensoesAlturaDupla.js";
 import calcularDimensoesCompostas from "./util/calculadorDimensoesCompostas.js";
-import {msg} from "./util/msg.js"
+import {msg} from "./util/msg.js";
+import vigaBiApMLC from "./imagens/viga-biap-em-mlc.png";
+import vigaTriApMLC from './imagens/viga-tri-apoiada.png';
+import vigaBiApCorteDuasAguasMLC from "./imagens/viga-bia-corte-duas-aguas-em-mlc.png";
+import TesouraMLC from "./imagens/tesoura-em-mlc.png";
+import TravBiapBalMLC from "./imagens/travessa-biap-bal-em-mlc.png";
+import TrelicaTiranteMLC from "./imagens/trelica-com-tirante-em-mlc.png";
+import TrelicaMLC from "./imagens/trelica-em-mlc.png";
+import Tesoura2MLC from "./imagens/tesoura-em-mlc-2.png";
+import ArcoMLC from "./imagens/arco-em-mlc.png";
+
+
 
 class Pieces extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			h: "",
-			h1:"",
-			l: "",
-			s0:"",
-			s1:"",
+			h: null,
+			h1:null,
+			l: null,
+			s0:null,
+			s1:null,
 			selectedPiece: {
 				name: "",
+				group: "",
+				description: "",
 				inclination:"",
 				freeSpan: "",
 				formula:"",
 			},
 			pieces: [
-				{name: "Viga Bi-apoiada em MLC", inclination: "<5º", freeSpan:"<40", formula: "simples"},
+				{name: "Viga Bi-apoiada em MLC", group: "vigas", description: "vigasDescricao",inclination: "<5º", freeSpan:"<40", formula: "simples", imagem: vigaBiApMLC},
 
-				{name: "Viga Triapoiada", inclination: "0º", freeSpan:"10-30", formula: "simples"},
+				{name: "Viga Triapoiada" , group: "vigas",description: "vigasDescricao",  inclination: "0º", freeSpan:"10-30", formula: "simples", imagem:vigaTriApMLC},
 				
-				{name: "Viga Bi-apoiada e Corde de duas águas em MLC", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla"},
+				{name: "Viga Bi-apoiada e Corte de duas águas em MLC", group: "vigas",description: "vigasDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", imagem: vigaBiApCorteDuasAguasMLC},
 				
-				{name: "Tesoura em MLC", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla"},
+				{name: "Tesoura em MLC", group: "arcos",description:"arcosDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", imagem: TesouraMLC},
 				
-				{name: "Travessa Bi-apoiada c/ Balanço em MLC", inclination: "<5º", freeSpan:"<40", formula: "simples"},							
+				{name: "Travessa Bi-apoiada c/ Balanço em MLC" , group: "arcos",description:"arcosDescricao", inclination: "<5º", freeSpan:"<40", formula: "simples", imagem: TravBiapBalMLC},							
 				
-				{name: "Sistema Pórtico c/ Tirante em MLC", inclination: ">= 15º", freeSpan:"<10-30", formula: "composta"},
+				{name: "Sistema Pórtico c/ Tirante em MLC", group: "porticos", description:"porticoDescricao", inclination: ">= 15º", freeSpan:"<10-30", formula: "composta"},
 				
-				{name: "Sistema Pórtico Curvo em MLC", inclination: "<15º", freeSpan:"<15-40", formula: "composta"},
+				{name: "Sistema Pórtico Curvo em MLC", group: "porticos", description:"porticoDescricao", inclination: "<15º", freeSpan:"<15-40", formula: "composta"},
 				
-				{name: "Sistema Pórtico em MLC", inclination: "<15º", freeSpan:"<10-30", formula: "composta"},
+				{name: "Sistema Pórtico em MLC", group: "porticos", description:"porticoDescricao", inclination: "<15º", freeSpan:"<10-30", formula: "composta"},
 				
-				{name: "Treliça c/ Tirante em MLC", inclination: ">= 15º", freeSpan:"10-100", formula: "simples"},
+				{name: "Treliça c/ Tirante em MLC", group: "trelicas",description:"trelicasDescricao", inclination: ">= 15º", freeSpan:"10-100", formula: "simples", imagem: TrelicaTiranteMLC},
 				
-				{name: "Arco em MLC", inclination: "í/L >= 0,144", freeSpan:"20-100", formula: "simples"},
+				{name: "Arco em MLC", group: "arcos",description:"arcosDescricao", inclination: "í/L >= 0,144", freeSpan:"20-100", formula: "simples", imagem: ArcoMLC},
 				
-				{name: "Treliça em MLC", inclination: "0º", freeSpan:"30-80", formula: "simples"},
+				{name: "Treliça em MLC", group: "trelicas",description:"trelicasDescricao", inclination: "0º", freeSpan:"30-80", formula: "simples", imagem: TrelicaMLC},
 				
-				{name: "Tesoura em MLC 2", inclination: ">=10º", freeSpan:"25-90", formula: "simples"},
+				{name: "Tesoura em MLC 2", group: "arcos",description:"arcosDescricao", inclination: ">=10º", freeSpan:"25-90", formula: "simples", imagem: Tesoura2MLC},
 				
-				{name: "Grelha MLC", inclination: "-", freeSpan:"<25m", formula: "simples"},
+				{name: "Grelha MLC", group: "grelas",description:"grelasDescricao", inclination: "-", freeSpan:"<25m", formula: "simples"},
 
-				{name: "Sistema Geodésico em MLC", inclination: "-", freeSpan:"L<200m", formula: "semCalculo"}
+				{name: "Sistema Geodésico em MLC", group: "geodescos",description:"geodesicoDescricao", inclination: "-", freeSpan:"L<200m", formula: "semCalculo"}
 			]
 		}
 	}
@@ -132,95 +145,133 @@ class Pieces extends React.Component {
 	}
 			
 	render(){
-		const name = this.props.selectedPiece;
+		const name= this.props.selectedPiece;
+		const {selectedPiece, h, h1,l, s0, s1} = this.state;
+		const {group} = selectedPiece;
+		const descricaoPeca = selectedPiece.description;
 		const placeholder = msg("input-placeholder");
-		const input5 = "input-field sub-border-brow col-md-5 col-sm-6";
-		const input3 = "input-field sub-border-brow col-md-3 col-sm-6";
+		const input = "input-field sub-border-brow m-sm-b";
+		const size5 = " col-md-5 col-sm-12";
+		const size3 = " col-md-6 col-sm-12";
 
 		const simples = (
-			<div className="col-md-9">				
-					<label>h: </label>					
-					<span className="input-field">
-						<input className={input5} value={this.state.h} name={name} placeholder={placeholder} onChange={(event) => this.changeHSimples(event)}/> 
-						m
-					</span>
-					<label>l: </label>
-					<span className="input-field">
-						<input className={input5} value={this.state.l} name={name} placeholder={placeholder}  onChange={(event) => this.changeLSimples(event)}/> 
-						m
-					</span>
+			<div className="col-md-12 text-center no-padding-sides">				
+					<div className={"inline-content" + size5}>	
+						<label>H: </label>					
+						<span className={input}>
+							<input type="number" value={h} name={name} placeholder={placeholder} onChange={(event) => this.changeHSimples(event)}/> 
+							m
+						</span>
+					</div>
+					<div className={"inline-content" + size5}>
+						<label>L: </label>
+						<span className={input}>
+							<input type="number" value={l} name={name} placeholder={placeholder}  onChange={(event) => this.changeLSimples(event)}/> 
+							m
+						</span>
+					</div>
 			
 			</div>
 		);
 
 		const alturaDupla = (
-			<div className="col-md-9">
-				<label>h<sub>0</sub>:</label>
-				<span className="input-field">
-					<input className={input3} value={this.state.h} name={name} placeholder={placeholder} onChange={(event) => this.changeHAlturaDupla(event)}/> 
-					m
-				</span>
-				<label>h<sub>1</sub>:</label>
-				<span className="input-field">
-					<input className={input3} value={this.state.h1} name={name} placeholder={placeholder} onChange={(event) => this.changeH1AlturaDupla(event)}/> 
-					m
-				</span>
-				<label>l:</label>
-				<span className="input-field">	
-					<input className={input3} value={this.state.l} name={name} placeholder={placeholder} onChange={(event) => this.changeLAlturaDupla(event)}/> 
-					m
-				</span>
+			<div className="col-md-12 text-center no-padding-sides">
+				<div className={"inline-content" + size3}>
+					<label>H<sub>0</sub>:</label>
+					<span className={input}>
+						<input type="number" value={h} name={name} placeholder={placeholder} onChange={(event) => this.changeHAlturaDupla(event)}/> 
+						m
+					</span>
+				</div>
+				<div className={"inline-content" + size3}>
+					<label>H<sub>1</sub>:</label>
+					<span className={input}>
+						<input type="number" value={h1} name={name} placeholder={placeholder} onChange={(event) => this.changeH1AlturaDupla(event)}/> 
+						m
+					</span>
+				</div>
+				<div className={"inline-content" + size3}>
+					<label>L:</label>
+					<span className={input}>	
+						<input type="number" value={l} name={name} placeholder={placeholder} onChange={(event) => this.changeLAlturaDupla(event)}/> 
+						m
+					</span>
+				</div>
 			</div>
 		);
 
 		const composta = (
-			<div className="col-md-9">
-				<label>s<sub>0</sub>:</label>
-				<span className="input-field">
-					<input className={input3} value={this.state.s0} name={name} placeholder={placeholder} onChange={(event) => this.changeS0(event)}/> 
-					m
-				</span>
-				<label>s<sub>1</sub>:</label>
-				<span className="input-field">
-					<input className={input3} value={this.state.s1} name={name} placeholder={placeholder} onChange={(event) => this.changeS1(event)}/> 
-					m
-				</span>
-				<button className="btn btn-primary btn-result" name={name} onClick={(event)=> this.calculateByComposedHigh(event)}> Calcular </button>
-				<label>h:</label>
-				<span className="span-result">{this.state.h} m</span>
+			<div className="col-md-12 text-center no-padding-sides">
+				<div className={"inline-content" + size3}>
+					<label>S<sub>0</sub>:</label>
+					<span className={input}>
+						<input type="number" value={s0} name={name} placeholder={placeholder} onChange={(event) => this.changeS0(event)}/> 
+						m
+					</span>
+				</div>
+				<div className={"inline-content" + size3}>
+					<label>S<sub>1</sub>:</label>
+					<span className={input}>
+						<input type="number" value={s1} name={name} placeholder={placeholder} onChange={(event) => this.changeS1(event)}/> 
+						m
+					</span>
+				</div>
+					<button className="btn btn-primary btn-result" name={name} onClick={(event)=> this.calculateByComposedHigh(event)}> Calcular </button>
+					<label>H:</label>
+					<span className="span-result">{h} m</span>
 			</div>
 		);
 
 		const info = (
-			<span className="info col-md-9">
-				<span>{msg("inclinacao")} {this.state.selectedPiece.inclination}</span>
-				<span>{msg("vao-livre")} {this.state.selectedPiece.freeSpan}</span>
+			<span className="info col-md-12 text-center">
+				<span>{msg("inclinacao")} {selectedPiece.inclination}</span>
+				<span>{msg("vao-livre")} {selectedPiece.freeSpan}</span>
 			</span>
 		)
+
+		const descricao = (
+			<span className="col-md-12">
+				<img src={selectedPiece.imagem} />
+			</span>
+		)
+
 
 		return (
             <div className="card">
                 <div className="card-header">
-                	{msg(this.props.selectedPiece)}
+                	{name ? 
+	            		<div>
+		            		<u>
+		                		{msg(name)}
+		                	</u>
+							<div className="tooltip-w3"><span className="help-info">?</span>
+							  <span className="tooltiptext-w3">{msg(group)}<br/>{msg(descricaoPeca)}</span>
+							</div>
+	                	</div> 
+	                	:
+	                	null}
                 </div>
                 <div className="card-body column">
                 	<div className="row justify-content-md-center">
-                		{this.state.selectedPiece.name ? info : null}
+                		{selectedPiece.name ? info : null}
                 	</div>
                 	<div className="row justify-content-md-center">
-		   				{this.state.selectedPiece ?
+		   				{selectedPiece ?
 
-							(this.state.selectedPiece.formula === "simples" ?
+							(selectedPiece.formula === "simples" ?
 							simples :
-							this.state.selectedPiece.formula === "alturaDupla" ?
+							selectedPiece.formula === "alturaDupla" ?
 							alturaDupla : 
-							this.state.selectedPiece.formula === "composta" ?
+							selectedPiece.formula === "composta" ?
 							composta :
-							this.state.selectedPiece.formula === "semCalculo" ?
+							selectedPiece.formula === "semCalculo" ?
 							null : welcome() 
 		   					):
 		   					welcome()
 			   				}
+                	</div>
+                	<div className="row justify-content-md-center">
+                		{selectedPiece.name ? descricao : null}
                 	</div>
                 </div>
             </div>
