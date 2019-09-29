@@ -13,7 +13,11 @@ import TrelicaTiranteMLC from "./imagens/trelica-com-tirante-em-mlc.png";
 import TrelicaMLC from "./imagens/trelica-em-mlc.png";
 import Tesoura2MLC from "./imagens/tesoura-em-mlc-2.png";
 import ArcoMLC from "./imagens/arco-em-mlc.png";
-
+import Geodesico from "./imagens/geodesico-em-mlc.png";
+import Grelha from "./imagens/grelha-em-mlc.png";
+import PorticoCTiranteMLC from "./imagens/portico-c-tirante-em-mlc.png";
+import PorticoCurvoMLC from "./imagens/portico-curvo-em-mlc.png";
+import PorticoMLC from "./imagens/portico-em-mlc.png"; 
 
 
 class Pieces extends React.Component {
@@ -34,33 +38,33 @@ class Pieces extends React.Component {
 				formula:"",
 			},
 			pieces: [
-				{name: "Viga Bi-apoiada em MLC", group: "vigas", description: "vigasDescricao",inclination: "<5º", freeSpan:"<40", formula: "simples", imagem: vigaBiApMLC},
+				{name: "Viga Bi-apoiada em MLC", group: "vigas", description: "vigasDescricao",inclination: "<5º", freeSpan:"<40", formula: "simples", image: vigaBiApMLC},
 
-				{name: "Viga Triapoiada" , group: "vigas",description: "vigasDescricao",  inclination: "0º", freeSpan:"10-30", formula: "simples", imagem:vigaTriApMLC},
+				{name: "Viga Triapoiada" , group: "vigas",description: "vigasDescricao",  inclination: "0º", freeSpan:"10-30", formula: "simples", image:vigaTriApMLC},
 				
-				{name: "Viga Bi-apoiada e Corte de duas águas em MLC", group: "vigas",description: "vigasDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", imagem: vigaBiApCorteDuasAguasMLC},
+				{name: "Viga Bi-apoiada e Corte de duas águas em MLC", group: "vigas",description: "vigasDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", image: vigaBiApCorteDuasAguasMLC},
 				
-				{name: "Tesoura em MLC", group: "arcos",description:"arcosDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", imagem: TesouraMLC},
+				{name: "Tesoura em MLC", group: "arcos",description:"arcosDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", image: TesouraMLC},
 				
-				{name: "Travessa Bi-apoiada c/ Balanço em MLC" , group: "arcos",description:"arcosDescricao", inclination: "<5º", freeSpan:"<40", formula: "simples", imagem: TravBiapBalMLC},							
+				{name: "Travessa Bi-apoiada c/ Balanço em MLC" , group: "arcos",description:"arcosDescricao", inclination: "<5º", freeSpan:"<40", formula: "simples", image: TravBiapBalMLC},							
 				
-				{name: "Sistema Pórtico c/ Tirante em MLC", group: "porticos", description:"porticoDescricao", inclination: ">= 15º", freeSpan:"<10-30", formula: "composta"},
+				{name: "Sistema Pórtico c/ Tirante em MLC", group: "porticos", description:"porticoDescricao", inclination: ">= 15º", freeSpan:"<10-30", formula: "composta", image: PorticoCTiranteMLC},
 				
-				{name: "Sistema Pórtico Curvo em MLC", group: "porticos", description:"porticoDescricao", inclination: "<15º", freeSpan:"<15-40", formula: "composta"},
+				{name: "Sistema Pórtico Curvo em MLC", group: "porticos", description:"porticoDescricao", inclination: "<15º", freeSpan:"<15-40", formula: "composta", image: PorticoCurvoMLC},
 				
-				{name: "Sistema Pórtico em MLC", group: "porticos", description:"porticoDescricao", inclination: "<15º", freeSpan:"<10-30", formula: "composta"},
+				{name: "Sistema Pórtico em MLC", group: "porticos", description:"porticoDescricao", inclination: "<15º", freeSpan:"<10-30", formula: "composta", image: PorticoMLC},
 				
-				{name: "Treliça c/ Tirante em MLC", group: "trelicas",description:"trelicasDescricao", inclination: ">= 15º", freeSpan:"10-100", formula: "simples", imagem: TrelicaTiranteMLC},
+				{name: "Treliça c/ Tirante em MLC", group: "trelicas",description:"trelicasDescricao", inclination: ">= 15º", freeSpan:"10-100", formula: "simples", image: TrelicaTiranteMLC},
 				
-				{name: "Arco em MLC", group: "arcos",description:"arcosDescricao", inclination: "í/L >= 0,144", freeSpan:"20-100", formula: "simples", imagem: ArcoMLC},
+				{name: "Arco em MLC", group: "arcos",description:"arcosDescricao", inclination: "í/L >= 0,144", freeSpan:"20-100", formula: "simples", image: ArcoMLC},
 				
-				{name: "Treliça em MLC", group: "trelicas",description:"trelicasDescricao", inclination: "0º", freeSpan:"30-80", formula: "simples", imagem: TrelicaMLC},
+				{name: "Treliça em MLC", group: "trelicas",description:"trelicasDescricao", inclination: "0º", freeSpan:"30-80", formula: "simples", image: TrelicaMLC},
 				
-				{name: "Tesoura em MLC 2", group: "arcos",description:"arcosDescricao", inclination: ">=10º", freeSpan:"25-90", formula: "simples", imagem: Tesoura2MLC},
+				{name: "Tesoura em MLC 2", group: "arcos",description:"arcosDescricao", inclination: ">=10º", freeSpan:"25-90", formula: "simples", image: Tesoura2MLC},
 				
-				{name: "Grelha MLC", group: "grelas",description:"grelasDescricao", inclination: "-", freeSpan:"<25m", formula: "simples"},
+				{name: "Grelha MLC", group: "grelhas",description:"grelhasDescricao", inclination: "-", freeSpan:"<25m", formula: "simples", image: Grelha},
 
-				{name: "Sistema Geodésico em MLC", group: "geodescos",description:"geodesicoDescricao", inclination: "-", freeSpan:"L<200m", formula: "semCalculo"}
+				{name: "Sistema Geodésico em MLC", group: "geodescos",description:"geodesicoDescricao", inclination: "-", freeSpan:"L<200m", formula: "semCalculo", image: Geodesico}
 			]
 		}
 	}
@@ -151,8 +155,8 @@ class Pieces extends React.Component {
 		const descricaoPeca = selectedPiece.description;
 		const placeholder = msg("input-placeholder");
 		const input = "input-field sub-border-brow m-sm-b";
-		const size5 = " col-md-5 col-sm-12";
-		const size3 = " col-md-6 col-sm-12";
+		const size5 = " col-md-4 col-sm-12";
+		const size3 = " col-md-5 col-sm-12";
 
 		const simples = (
 			<div className="col-md-12 text-center no-padding-sides">				
@@ -231,7 +235,7 @@ class Pieces extends React.Component {
 
 		const descricao = (
 			<span className="col-md-12">
-				<img src={selectedPiece.imagem} />
+				<img src={selectedPiece.image} alt={selectedPiece.name}/>
 			</span>
 		)
 

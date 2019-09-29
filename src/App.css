@@ -24,7 +24,7 @@ h2 .welcome {
 .tooltip-w3 .tooltiptext-w3 {
   font-size: 14px;
   visibility: hidden;
-  width: 300px;
+  width: 15rem;
   background-color: rgb(0,0,0,.8);
   color: #fff;
   border-radius: 6px;
@@ -1749,6 +1749,20 @@ img {
 
 
 @media screen and (max-width: 991px) {
+  .tooltip-w3 .tooltiptext-w3 {
+    font-size: 14px;
+    visibility: hidden;
+    width: 15rem;
+    background-color: rgb(0,0,0,.8);
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -10rem;
+  }
   #minimizeSidebar {
     display: none; }
   .navbar .container-fluid {
@@ -2043,7 +2057,12 @@ img {
     padding-right: 100px;
     text-align: center; }
     .nav-tabs .nav-item > .nav-link {
-      margin-bottom: 5px; }
+      font-size: 12px;
+      margin-bottom: 5px; 
+    }
+    .nav-item .nav-link span {
+    font-size: 14px;
+  }
   .user-profile [class*="col-"] {
     padding-left: 15px !important;
     padding-right: 15px !important; }

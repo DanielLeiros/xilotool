@@ -7,7 +7,7 @@ export default function welcome(){
 	return(
 		<div>
 			<h2 className="welcome text-center">{msg("boas-vindas")}</h2>
-			<div className="row justify-content-center">
+			<div className="contaner-fluid" style={{textAlign: "center"}}>				
 				<img src={logo} alt="logo xilotool"/>
 				<div style={{textAlign:"center", padding: '0 40px 0 40px'}}>
 					

@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import logo from "./imagens/logo.png";
-import labem from "./imagens/labem.png";
+import labem from "./imagens/labem2.png";
 import cs from "./imagens/csufrn.png";
 import Pieces from "./pieces.js";
 import ReactFlagsSelect from 'react-flags-select';
@@ -88,7 +88,7 @@ class App extends React.Component{
                {piecesList.map((el,i) =>{
                   return(
                    <li key={i}>
-                      <a>
+                      <a href="#">
                         <div onClick={() => this.onChengePiece(el)} >
                           {msg(el)}
                         </div>
