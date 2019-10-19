@@ -10,6 +10,7 @@
     "react-dom": "^16.8.6",
     "react-flags-select": "^1.1.10",
     "react-scripts": "3.0.1",
+    "react-viewer": "^2.11.1",
     "reactstrap": "^8.0.0"
   },
   "scripts": {

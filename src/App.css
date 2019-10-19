@@ -21,6 +21,16 @@ h2 .welcome {
   font-size: 16px;
 }
 
+.img-description {
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
+}
+
+.img-description:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 .tooltip-w3 .tooltiptext-w3 {
   font-size: 14px;
   visibility: hidden;
@@ -1749,6 +1759,19 @@ img {
 
 
 @media screen and (max-width: 991px) {
+
+  .img-description{
+    margin-top: 20px;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  .img-description:hover{
+    margin-top: 20px;
+    -webkit-transform: scale(1.35);
+    transform: scale(1.35);
+  }
+
   .tooltip-w3 .tooltiptext-w3 {
     font-size: 14px;
     visibility: hidden;

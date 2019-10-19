@@ -44,7 +44,7 @@ class Pieces extends React.Component {
 				
 				{name: "Viga Bi-apoiada e Corte de duas águas em MLC", group: "vigas",description: "vigasDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", image: vigaBiApCorteDuasAguasMLC},
 				
-				{name: "Tesoura em MLC", group: "arcos",description:"arcosDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", image: TesouraMLC},
+				{name: "Tesoura em MLC", group: "tesouras",description:"tesourasDescricao", inclination: "3º-10º", freeSpan:"10-40", formula: "alturaDupla", image: TesouraMLC},
 				
 				{name: "Travessa Bi-apoiada c/ Balanço em MLC" , group: "arcos",description:"arcosDescricao", inclination: "<5º", freeSpan:"<40", formula: "simples", image: TravBiapBalMLC},							
 				
@@ -60,11 +60,11 @@ class Pieces extends React.Component {
 				
 				{name: "Treliça em MLC", group: "trelicas",description:"trelicasDescricao", inclination: "0º", freeSpan:"30-80", formula: "simples", image: TrelicaMLC},
 				
-				{name: "Tesoura em MLC 2", group: "arcos",description:"arcosDescricao", inclination: ">=10º", freeSpan:"25-90", formula: "simples", image: Tesoura2MLC},
+				{name: "Tesoura em MLC 2", group: "tesouras",description:"tesourasDescricao", inclination: ">=10º", freeSpan:"25-90", formula: "simples", image: Tesoura2MLC},
 				
 				{name: "Grelha MLC", group: "grelhas",description:"grelhasDescricao", inclination: "-", freeSpan:"<25m", formula: "simples", image: Grelha},
 
-				{name: "Sistema Geodésico em MLC", group: "geodescos",description:"geodesicoDescricao", inclination: "-", freeSpan:"L<200m", formula: "semCalculo", image: Geodesico}
+				{name: "Sistema Geodésico em MLC", group: "geodesicos",description:"geodesicoDescricao", inclination: "-", freeSpan:"L<200m", formula: "semCalculo", image: Geodesico}
 			]
 		}
 	}
@@ -235,7 +235,7 @@ class Pieces extends React.Component {
 
 		const descricao = (
 			<span className="col-md-12">
-				<img src={selectedPiece.image} alt={selectedPiece.name}/>
+				<img className="img-description" src={selectedPiece.image} alt={selectedPiece.name}/>
 			</span>
 		)
 
