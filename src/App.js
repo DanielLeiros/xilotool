@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import logo from "./imagens/logo.png";
 import labem from "./imagens/labem2.png";
 import cs from "./imagens/csufrn.png";
-import Pieces from "./pieces.js";
+import PortalDePecas from "./PortalDePecas";
 import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 import 'react-flags-select/scss/react-flags-select.scss';
@@ -55,20 +55,18 @@ class App extends React.Component{
     const {navIsOpen, navOpen, defaultLang, toggle, selectedPiece} = this.state;
 
     const piecesList = [
-      "Viga Bi-apoiada em MLC",
-      "Viga Triapoiada",
-      "Viga Bi-apoiada e Corte de duas águas em MLC",
-      "Tesoura em MLC",
-      "Travessa Bi-apoiada c/ Balanço em MLC",
-      "Sistema Pórtico c/ Tirante em MLC",
-      "Sistema Pórtico Curvo em MLC",
-      "Sistema Pórtico em MLC",
-      "Treliça c/ Tirante em MLC",
-      "Arco em MLC",
-      "Treliça em MLC",
-      "Tesoura em MLC 2",
-      "Grelha MLC",
-      "Sistema Geodésico em MLC"
+      "Viga Bi-apoiada (MLC)",
+      "Viga vagão (MLC)",
+      "Viga em duas águas (MLC)",
+      "Viga em duas águas - curva (MLC)",
+      "Viga Bi-apoiada c/ Balanço (MLC)",
+      "Viga de cobertura em duas águas (MLC)",
+      "Pórtico atirantado (MLC)",
+      "Pórtico em duas águas (MLC)",
+      "Arco (MLC)",
+      "Treliça de banzo paralelo",
+      "Treliça de banzo inclinado",
+      "Grelha (MLC)",
     ]
 
     return (
@@ -88,8 +86,8 @@ class App extends React.Component{
                {piecesList.map((el,i) =>{
                   return(
                    <li key={i}>
-                      <a href="#">
-                        <div onClick={() => this.onChengePiece(el)} >
+                      <a href="#" onClick={() => this.onChengePiece(el)}>
+                        <div>
                           {msg(el)}
                         </div>
                       </a>
@@ -145,7 +143,7 @@ class App extends React.Component{
             <div className="row">
               <div className="col-md-12">
           {/*Chamando componente para calcular e imprimir na tela!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11*/}
-                <Pieces selectedPiece={selectedPiece}/>
+                <PortalDePecas selectedPiece={selectedPiece}/>
           {/*Componente chamado e impresso na tela com sucesso ou quase!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11*/}
               </div>
             </div>
