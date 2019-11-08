@@ -10,6 +10,7 @@ import TrelicaMLC from "./imagens/trelica-em-mlc.png";
 import Tesoura2MLC from "./imagens/tesoura-em-mlc-2.png";
 import ArcoMLC from "./imagens/arco-em-mlc.png";
 import Grelha from "./imagens/grelha-em-mlc.png";
+import ImgVigaVagao from "./imagens/viga-vagao-mlc.png";
 import PorticoCTiranteMLC from "./imagens/portico-c-tirante-em-mlc.png";
 import PorticoMLC from "./imagens/portico-em-mlc.png"; 
 import Triplas from "./Peças/Triplas";
@@ -36,7 +37,7 @@ class PortalDePecas extends React.Component {
 			pieces: [
 				{name: "Viga Bi-apoiada (MLC)", group: "vigas", description: "vigasDescricao", component: "Triplas", image: vigaBiApMLC },
 
-				{name: "Viga vagão (MLC)", group: "vigas", description: "vigasDescricao", component: "VigaVagao", image: vigaBiApMLC},
+				{name: "Viga vagão (MLC)", group: "vigas", description: "vigasDescricao", component: "VigaVagao", image: ImgVigaVagao},
 				
 				{name: "Viga em duas águas (MLC)", group: "vigas",description: "vigasDescricao", component: "VigaComDuasAguas", image: vigaBiApCorteDuasAguasMLC},
 				
