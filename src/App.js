@@ -167,7 +167,7 @@ class App extends React.Component{
                 </div>
                 <div className="justify-content-center">
                   <div className="copyright">
-                    Copyright © 2019 - Labem - Beta.v1.0.1
+                    Copyright © 2019 - Labem - Beta.v1.2.1
                   </div>
                 </div>    
               </div>          

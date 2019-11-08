@@ -46,7 +46,7 @@ const Arco = (props) => {
                     m
                 </span>
             </div>
-            <button className="btn btn-primary col-md-1 col-sm-12" style={{marginLeft: -15}} onClick={()=> calcularValores()}>{msg("calcular")}</button>
+            <button className="btn btn-primary col-md-1 col-sm-12 btn-calcular" onClick={()=> calcularValores()}>{msg("calcular")}</button>
             <div className={"inline-content" + size2}>	
                 <label>H: </label>					
                 <span className={input}>

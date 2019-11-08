@@ -20,14 +20,7 @@ import Arco from "./Peças/Arco";
 import PorticoEmDuasAguas from "./Peças/PorticoEmDuasAguas";
 import TrelicaDeBanzoInclinado from "./Peças/TrelicaDeBanzoInclinado";
 import PorticoAtirantado from "./Peças/PorticoAtirantado";
-import { LegVigaBiapMlc, LegPorticoAtirantado, LegVigaVagao, LegVigaComDuasAguas, 
-	LegVigaBiapComBalanco, 
-	LegPorticoEmDuasAguas,
-	LegArco,
-	LegTrelicaBanzoParalelo,
-	LegTrelicaBanzoInclinado,
-	LegGrelha} from "./util/Legendas"
-
+import Legenda from "./util/Legendas";
 
 class PortalDePecas extends React.Component {
 	constructor(props){
@@ -41,29 +34,29 @@ class PortalDePecas extends React.Component {
 				formula:"",
 			},
 			pieces: [
-				{name: "Viga Bi-apoiada (MLC)", group: "vigas", description: "vigasDescricao", component: "Triplas", image: vigaBiApMLC, legend: <LegVigaBiapMlc />},
+				{name: "Viga Bi-apoiada (MLC)", group: "vigas", description: "vigasDescricao", component: "Triplas", image: vigaBiApMLC },
 
-				{name: "Viga vagão (MLC)", group: "vigas", description: "vigasDescricao", component: "VigaVagao", image: vigaBiApMLC, legend: <LegVigaVagao />},
+				{name: "Viga vagão (MLC)", group: "vigas", description: "vigasDescricao", component: "VigaVagao", image: vigaBiApMLC},
 				
-				{name: "Viga em duas águas (MLC)", group: "vigas",description: "vigasDescricao", component: "VigaComDuasAguas", image: vigaBiApCorteDuasAguasMLC, legend: <LegVigaComDuasAguas/>},
+				{name: "Viga em duas águas (MLC)", group: "vigas",description: "vigasDescricao", component: "VigaComDuasAguas", image: vigaBiApCorteDuasAguasMLC},
 				
-				{name: "Viga em duas águas - curva (MLC)", group: "vigas",description:"vigasDescricao", component: "VigaComDuasAguas", image: TesouraMLC, legend: <LegVigaComDuasAguas />},
+				{name: "Viga em duas águas - curva (MLC)", group: "vigas",description:"vigasDescricao", component: "VigaComDuasAguas", image: TesouraMLC},
 				
-				{name: "Viga Bi-apoiada c/ Balanço (MLC)", group: "vigas",description:"vigasDescricao", component: "VigaBiapComBalanco", image: TravBiapBalMLC, legend: <LegVigaBiapComBalanco />},							
+				{name: "Viga Bi-apoiada c/ Balanço (MLC)", group: "vigas",description:"vigasDescricao", component: "VigaBiapComBalanco", image: TravBiapBalMLC},							
 				
-				{name: "Pórtico atirantado (MLC)", group: "porticos", description:"porticoDescricao", component: "PorticoAtirantado", image: PorticoCTiranteMLC, legend: <LegPorticoAtirantado />},
+				{name: "Pórtico atirantado (MLC)", group: "porticos", description:"porticoDescricao", component: "PorticoAtirantado", image: PorticoCTiranteMLC},
 								
-				{name: "Pórtico em duas águas (MLC)", group: "porticos", description:"porticoDescricao", component: "PorticoEmDuasAguas", image: PorticoMLC, legend: <LegPorticoEmDuasAguas />},
+				{name: "Pórtico em duas águas (MLC)", group: "porticos", description:"porticoDescricao", component: "PorticoEmDuasAguas", image: PorticoMLC},
 			
-				{name: "Viga de cobertura em duas águas (MLC)", group: "vigas",description:"vigasDescricao", component: "Triplas", image: TrelicaTiranteMLC, legend: <LegVigaComDuasAguas />},
+				{name: "Viga de cobertura em duas águas (MLC)", group: "vigas",description:"vigasDescricao", component: "Triplas", image: TrelicaTiranteMLC},
 				
-				{name: "Arco (MLC)", group: "arcos",description:"arcosDescricao", component: "Arco", image: ArcoMLC, legend: <LegArco />},
+				{name: "Arco (MLC)", group: "arcos",description:"arcosDescricao", component: "Arco", image: ArcoMLC},
 			
-				{name: "Treliça de banzo paralelo", group: "trelicas",description:"trelicasDescricao", component: "Triplas", image: TrelicaMLC, legend: <LegTrelicaBanzoParalelo />},
+				{name: "Treliça de banzo paralelo", group: "trelicas",description:"trelicasDescricao", component: "Triplas", image: TrelicaMLC},
 				
-				{name: "Treliça de banzo inclinado", group: "trelicas",description:"trelicasDescricao", component: "TrelicaDeBanzoInclinado", image: Tesoura2MLC, legend: <LegTrelicaBanzoInclinado />},
+				{name: "Treliça de banzo inclinado", group: "trelicas",description:"trelicasDescricao", component: "TrelicaDeBanzoInclinado", image: Tesoura2MLC},
 			
-				{name: "Grelha (MLC)", group: "grelhas",description:"grelhasDescricao", component: "Triplas", image: Grelha, legend: <LegGrelha />},
+				{name: "Grelha (MLC)", group: "grelhas",description:"grelhasDescricao", component: "Triplas", image: Grelha},
 			]
 		}
 	}
@@ -112,7 +105,7 @@ class PortalDePecas extends React.Component {
 		const descricao = (
 			<span className="col-md-12">
 				<img className="img-description" src={selectedPiece.image} alt={selectedPiece.name}/>
-				{selectedPiece.legend}
+				<Legenda name={selectedPiece.name} />
 			</span>
 		)
 
